@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import Container, { Inject, Service } from "typedi";
+import Container, { Service } from "typedi";
 import { BaseUseCase } from "../base.useCase";
 import { InputCreateDriverDto } from '../../dto/driver/driver.dto';
 import { IDriverRepository } from '../../repositories/driver.repository';
