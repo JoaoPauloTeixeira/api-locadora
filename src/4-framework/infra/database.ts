@@ -3,6 +3,7 @@ import { Sequelize } from "sequelize-typescript";
 import { Driver } from "../models/postgres/driver";
 import { SysParams } from "../models/postgres/sysParams";
 import { Vehicle } from "../models/postgres/vehicle";
+import { VehicleRental } from "../models/postgres/vehicleRental";
 
 dotenv.config();
 
@@ -13,7 +14,7 @@ const connection = new Sequelize({
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
   logging: false,
-  models: [Driver, SysParams, Vehicle],
+  models: [Driver, SysParams, Vehicle, VehicleRental],
 });
 
 export default connection;
