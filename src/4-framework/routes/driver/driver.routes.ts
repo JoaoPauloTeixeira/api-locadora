@@ -24,19 +24,34 @@ class DriverRoutes {
   }
 
   initialize() {
-    this.router.get('/', async (req: Request, res: Response) => {
-      res.status(200).json(await this.getDriverController.run(req.query));
+    this.router.get('/', async (req: Request, res: Response): Promise<any> => {
+      try {
+        res.status(200).json(await this.getDriverController.run(req.query));
+      } catch (error) {
+          res.status(error.code ?? error.httpCode ?? 500)
+          return res.json(error)        
+      }
     });
 
-    this.router.get('/:id', async (req: Request, res: Response) => {
-      res.status(200).json(await this.getDriverByIdController.run(req.params.id));
+    this.router.get('/:id', async (req: Request, res: Response): Promise<any> => {
+      try {
+        res.status(200).json(await this.getDriverByIdController.run(req.params.id));
+      } catch (error) {
+          res.status(error.code ?? error.httpCode ?? 500)
+          return res.json(error)        
+      }
     });
 
     this.router.post(
       '/',
       createDriverValidator as any,
       async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-        res.status(200).json(await this.createDriverController.run(req.body));
+        try {
+          res.status(200).json(await this.createDriverController.run(req.body));
+        } catch (error) {
+          res.status(error.code ?? error.httpCode ?? 500)
+          return res.json(error)          
+        }
       },
     );
 
@@ -45,7 +60,12 @@ class DriverRoutes {
       updateDriverValidator as any,
       async (req: Request, res: Response, next: NextFunction): Promise<any> => {
         const { id } = req.params
-        res.status(200).json(await this.updateDriverController.run({ ...req.body, id }));
+        try {
+          res.status(200).json(await this.updateDriverController.run({ ...req.body, id }));
+        } catch (error) {
+          res.status(error.code ?? error.httpCode ?? 500)
+          return res.json(error)          
+        }
       },
     );
 
@@ -53,7 +73,12 @@ class DriverRoutes {
       '/inactivate',
       inactivateDriverValidator as any,
       async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-        res.status(200).json(await this.inactivateDriverController.run(req.body));
+        try {
+          res.status(200).json(await this.inactivateDriverController.run(req.body));
+        } catch (error) {
+          res.status(error.code ?? error.httpCode ?? 500)
+          return res.json(error)          
+        }
       },
     );
 

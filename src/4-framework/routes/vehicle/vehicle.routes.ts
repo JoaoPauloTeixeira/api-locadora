@@ -20,26 +20,46 @@ class VehicleRoutes {
   }
 
   initialize() {
-    this.router.get('/', async (req: Request, res: Response) => {
-      res.status(200).json(await this.getVehicleController.run(req.query));
+    this.router.get('/', async (req: Request, res: Response): Promise<any> => {
+      try {
+        res.status(200).json(await this.getVehicleController.run(req.query));
+      } catch (error) {
+        res.status(error.code ?? error.httpCode ?? 500)
+        return res.json(error)
+      }
     });
 
-    this.router.get('/:id', async (req: Request, res: Response) => {
-      res.status(200).json(await this.getVehicleByIdController.run(req.params.id));
+    this.router.get('/:id', async (req: Request, res: Response): Promise<any> => {
+      try {
+        res.status(200).json(await this.getVehicleByIdController.run(req.params.id));
+      } catch (error) {
+        res.status(error.httpCode ?? 500)
+        return res.json(error)
+      }
     });
 
     this.router.post(
       '/',
       async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-        res.status(200).json(await this.createVehicleController.run(req.body));
+        try {
+          res.status(200).json(await this.createVehicleController.run(req.body));
+        } catch (error) {
+          res.status(error.httpCode ?? 500)
+          return res.json(error)
+        }
       },
     );
 
     this.router.patch(
       '/:id',
       async (req: Request, res: Response, next: NextFunction): Promise<any> => {
-        const { id } = req.params
-        res.status(200).json(await this.updateVehicleController.run({ ...req.body, id }));
+        try {
+          const { id } = req.params
+          res.status(200).json(await this.updateVehicleController.run({ ...req.body, id }));
+        } catch (error) {
+          res.status(error.httpCode ?? 500)
+          return res.json(error)
+        }
       },
     );
 
