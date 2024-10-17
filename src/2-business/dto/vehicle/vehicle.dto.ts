@@ -21,6 +21,6 @@ export interface InputGetVehicleFiltersDto {
 
 export interface InputUpdateVehicleDto {
     id: string
-    available?: boolean
+    available?: string
     active?: string
 }
