@@ -1,5 +1,5 @@
 import 'reflect-metadata';
-import Container, { Inject, Service } from "typedi";
+import Container, { Service } from "typedi";
 import { BaseUseCase } from "../base.useCase";
 import { VehicleEntity } from '../../../1-enterprise/entities/vehicle.entity';
 import { IVehicleRepository } from '../../repositories/vehicle.repository';
