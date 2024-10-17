@@ -1,6 +1,4 @@
-import { Table, Model, Column, DataType, HasOne } from "sequelize-typescript";
-import { Driver } from "./driver";
-import { NonAttribute } from "sequelize";
+import { Table, Model, Column, DataType } from "sequelize-typescript";
 
 @Table({
   timestamps: false,
@@ -24,7 +22,6 @@ export class Vehicle extends Model {
   @Column({
     type: DataType.STRING,
     allowNull: false,
-    unique: true
   })
   color!: string;
 
