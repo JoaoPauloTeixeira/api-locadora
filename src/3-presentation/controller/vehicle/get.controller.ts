@@ -1,7 +1,6 @@
 import 'reflect-metadata';
 import Container, { Service } from "typedi";
 import { BaseController } from "../base.controller";
-import { defaultError } from '../../../2-business/module/errors/default';
 import { Output } from '../../../2-business/dto/output';
 import { InputGetVehicleFiltersDto, OutputGetVehicleDto } from '../../../2-business/dto/driver/vehicle.dto';
 import GetVehicleUseCase from '../../../2-business/useCases/vehicle/get.useCase';
@@ -19,15 +18,13 @@ export class GetVehicleController extends BaseController<InputGetVehicleFiltersD
     async run(input: InputGetVehicleFiltersDto): Promise<Output<OutputGetVehicleDto>> {
         try {
             const response = await this.useCase.run(input)
-            
             return {
                 status: 'success',
                 httpCode: 200,
                 data: response
             }
         } catch (error) {
-            console.log(error)
-            throw defaultError
+            throw error
         }
     }
 
