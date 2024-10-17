@@ -3,6 +3,8 @@ import { CreateDriverValidationSchema } from "../validators/driver/create";
 import { validateOrReject } from "class-validator";
 import { UpdateDriverValidationSchema } from "../validators/driver/update";
 import { InactivateDriverValidationSchema } from "../validators/driver/inactivate";
+import { plainToClass } from "class-transformer";
+import { Driver } from "../models/postgres/driver";
 
 export const createDriverValidator = async (
   req: Request,
@@ -22,7 +24,7 @@ export const createDriverValidator = async (
 
     // checks a driver instance against the schema validations
     await validateOrReject(driverData);
-
+    
     // calls the next operation
     next();
   } catch (e: any) {
@@ -79,6 +81,7 @@ export const inactivateDriverValidator = async (
     // checks a driver instance against the schema validations
     await validateOrReject(data);
 
+    req.body = plainToClass(Driver, data);
     // calls the next operation
     next();
   } catch (e: any) {
