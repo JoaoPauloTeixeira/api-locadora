@@ -7,7 +7,7 @@ import { Sequelize } from 'sequelize';
 import dotenv from "dotenv";
 import connection from "./4-framework/infra/database";
 
-const PORT = 3000;
+const PORT = process.env.NODE_LOCAL_PORT;
 
 @Service()
 class ExpressServer {

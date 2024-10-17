@@ -2,31 +2,42 @@ services:
   postgresdb:
     image: postgres
     restart: unless-stopped
-    env_file: ./.env
     environment:
-      - POSTGRES_USER=$POSTGRESDB_USER
-      - POSTGRES_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
-      - POSTGRES_DB=$POSTGRESDB_DATABASE
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "loca_seidor_2024"
+      POSTGRES_DB: "loca_seidor_db"
     ports:
-      - $POSTGRESDB_DOCKER_PORT:$POSTGRESDB_LOCAL_PORT
+      - "5432:5432"
+    networks:
+      - locadora      
     volumes:
-      - db:/var/lib/postgres
+       - postgres:/data/postgres
   app:
     depends_on:
       - postgresdb
-    build: ../api-locadora
+    build:
+      context: ./
+      dockerfile: ./Dockerfile    
     restart: unless-stopped
     env_file: ./.env
     ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+      - "3001:8080"
+    volumes:
+      - ./:/app      
     environment:
-      - DB_HOST=postgresdb
-      - DB_USER=$POSTGRESDB_USER
-      - DB_PASSWORD=$POSTGRESDB_ROOT_PASSWORD
-      - DB_NAME=$POSTGRESDB_DATABASE
-      - DB_PORT=$POSTGRESDB_DOCKER_PORT
+      DB_HOST: "postgresdb"
+      DB_USER: "postgres"
+      DB_PASSWORD: "loca_seidor_2024"
+      DB_NAME: "loca_seidor_db"
+      DB_PORT: "5432"
+    networks:
+      - locadora
     stdin_open: true
     tty: true
 
+networks:  
+  locadora:
+    driver: bridge
+    external: true
 volumes: 
-  db:
+  postgres:
