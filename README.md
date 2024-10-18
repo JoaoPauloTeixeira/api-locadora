@@ -17,7 +17,7 @@ favorecer a sua reusabilidade, por camadas separadas por suas responsabilidades.
 
 ![image](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
-A arquitetura utiliza tem como objetivo mover as dependências apenas dos níveis externos para os internos.
+A arquitetura utilizada tem como objetivo mover as dependências apenas dos níveis externos para os internos.
 Os níveis mais internos não podem mencionar as variáveis, funções e classes que existem nas camadas externas.
 Uma das vantagens é que o sistema fica completamente testável, pois as regras de negócios podem ser validadas sem a necessidade da interface do usuário, banco de dados, servidor ou qualquer outro elemento externo e facilita a manutenção.
 
@@ -66,7 +66,7 @@ docker compose up -d
 
 ## ⏺️ Usando api-locadora
 
-Para usar foi disponibilziada uma collection do postman com todas as requicisoes do propjeto. O arquivo está na raíz do projeto com nome loca-seidor.postman_collection, basta importar e utilizar.
+Para usar foi disponibilziada uma collection do postman com todas as requicisoes do projeto. O arquivo está na raíz do projeto com nome loca-seidor.postman_collection, basta importar e utilizar.
 
 
 
