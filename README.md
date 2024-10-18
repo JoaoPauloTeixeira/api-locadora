@@ -21,6 +21,11 @@ A arquitetura utiliza tem como objetivo mover as dependências apenas dos nívei
 Os níveis mais internos não podem mencionar as variáveis, funções e classes que existem nas camadas externas.
 Uma das vantagens é que o sistema fica completamente testável, pois as regras de negócios podem ser validadas sem a necessidade da interface do usuário, banco de dados, servidor ou qualquer outro elemento externo e facilita a manutenção.
 
+As camadas utilizadas sao as seguintes:
+ - 🏭 1-enterprise é uma camada onde armazena as regras de negócios centrais e as entidades principais da aplicação.
+ - 💼 2-business é a camada aonde fica os casos de uso da aplicação.
+ - 🕹 3-presentation é a camada que fica entre a camada mais externa e a business com objetivo de ser apenas um controlador de requicisoes e respostas da aplicação.
+-  🌐 4-framework é a camada que lida com funcionalidades que dependem de de detalhes e tecnologias externas como pacotes, libs, ORM, requicisoes para outras API´s, etc.
 ## ➡️ Fluxograma das funcionalidades do projeto
 
 Fluxograma dos endpoints disponivel no google drive.
