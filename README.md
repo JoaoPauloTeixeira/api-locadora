@@ -24,8 +24,8 @@ Uma das vantagens é que o sistema fica completamente testável, pois as regras 
 As camadas utilizadas sao as seguintes:
  - 🏭 1-enterprise é uma camada onde armazena as regras de negócios centrais e as entidades principais da aplicação.
  - 💼 2-business é a camada aonde fica os casos de uso da aplicação.
- - 🕹 3-presentation é a camada que fica entre a camada mais externa e a business com objetivo de ser apenas um controlador de requicisoes e respostas da aplicação.
--  🌐 4-framework é a camada que lida com funcionalidades que dependem de de detalhes e tecnologias externas como pacotes, libs, ORM, requicisoes para outras API´s, etc.
+ - 🕹 3-presentation é a camada que fica entre a camada mais externa e a business com objetivo de ser apenas um controlador de requisições e respostas da aplicação.
+-  🌐 4-framework é a camada que lida com funcionalidades que dependem de de detalhes e tecnologias externas como pacotes, libs, ORM, requisições para outras API´s, etc.
 ## ➡️ Fluxograma das funcionalidades do projeto
 
 Fluxograma dos endpoints disponivel no google drive.
@@ -66,7 +66,7 @@ docker compose up -d
 
 ## ⏺️ Usando api-locadora
 
-Para usar foi disponibilziada uma collection do postman com todas as requicisoes do projeto. O arquivo está na raíz do projeto com nome loca-seidor.postman_collection, basta importar e utilizar.
+Para usar foi disponibilziada uma collection do postman com todas as requisições do projeto. O arquivo está na raíz do projeto com nome loca-seidor.postman_collection, basta importar e utilizar.
 
 
 
