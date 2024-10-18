@@ -21,11 +21,11 @@ A arquitetura utiliza tem como objetivo mover as dependências apenas dos nívei
 Com isso os códigos nas camadas internas não precisam ter conhecimento necessariamente das funções nas camadas externas. Os níveis mais internos não podem mencionar as variáveis, funções e classes que existem nas camadas externas.
 Uma das vantagens é que o sistema fica completamente testável, pois as regras de negócios podem ser validadas sem a necessidade da interface do usuário, banco de dados, servidor ou qualquer outro elemento externo e facilita a manutenção.
 
-## 🚀 Fluxograma das funcionalidades do projeto
+## ➡️ Fluxograma das funcionalidades do projeto
 
-Fluxograma Motorista
-![image]()[Uploading fluxograma_locadora.drawio…]()
+Fluxograma dos endpoints disponivel no google drive.
 
+ - https://drive.google.com/drive/folders/1fOOmPAIbE_DabFhS8-BbsN1KNw4_0XAB?usp=sharing
 
 ## 🚀 Executando projeto
 
@@ -50,6 +50,14 @@ docker compose up -d
 ```
 
 Pronto! Agora será possível acessar o Banco de dados localmente e acessar os endpoints do projeto.
+
+Caso este processo não funcione, será necessário seguir os passos abaixo:
+
+- instalar versão v18.20.4 do node
+- executar npm install ou yarn para instalar os pacotes
+- executar o comando docker run -d --name loca_seidor_db -p 5432:5432 -e POSTGRES_PASSWORD=loca_seidor_2024 -e POSTGRES_DB=loca_seidor_db -e POSTGRES_USER=postgres -v pgdata:/var/lib/postgresql/data postgres -d
+  para criar o banco de dados manualmente.
+- npm run start ou yarn start pra iniciar a aplicacao.
 
 ## ☕ Usando api-locadora
 
